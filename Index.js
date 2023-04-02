@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const fsExtra = require("fs-extra");
-const markDown = require('./lib/ReadmeGen')
 
 // README questions
 const questions = [
