@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const fsExtra = require("fs-extra");
-const markDown = require('./lib/ReadmeGen'
+const markDown = require('./lib/ReadmeGen')
 
 // README questions
 const questions = [
@@ -50,3 +50,45 @@ const questions = [
         }
     }
 ];
+
+
+// generateREADME functions to generate the answers 
+function generateREADME(answers) {
+    const licenseBadge = answers.license !== "None"
+      ? `![License: ${answers.license}](https://img.shields.io/badge/License-${answers.license.replace(/-/g, "%20")}-blue.svg)`
+      : "";
+  
+    return `
+  # ${answers.title} ${licenseBadge}
+  
+  ## Description
+  ${answers.description}
+  
+  ## Table of Contents
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
+  
+  ## Installation
+  ${answers.installation}
+  
+  ## Usage
+  ${answers.usage}
+  
+  ## License
+  This project is covered under the ${answers.license} License.
+  
+  ## Contributing
+  ${answers.contributing}
+  
+  ## Tests
+  ${answers.tests}
+  
+  ## Questions
+  For any questions, please reach out to [${answers.github}](https://github.com/${answers.github}) or email me at ${answers.email}.
+  `;
+  }
+  
