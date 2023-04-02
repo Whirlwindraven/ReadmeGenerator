@@ -92,3 +92,10 @@ function generateREADME(answers) {
   `;
   }
   
+  inquirer.prompt(questions).then((answers) => {
+    const readmeContent = generateREADME(answers);
+    fs.writeFile("README.md", readmeContent, (err) => {
+      if (err) throw err;
+      console.log("README.md has been generated successfully!");
+    });
+  });
